@@ -1,0 +1,62 @@
+[tool.poetry]
+name = "wellsantos-tools"
+version = "1.0.1"
+description = "Simple wrappers for Dependency Injection and Hierarchical Settings"
+authors = ["wellsantos@wellsantos.com"]
+readme = "README.md"
+packages = []
+
+[tool.blue]
+target-version = ["py310"]
+line-length = 120
+skip-string-normalization = true
+exclude = "/.venv"
+
+[tool.isort]
+profile = "black"
+known_first_party = "wellsantos"
+atomic = true
+line_length = 120
+multi_line_output = 3
+use_parentheses = true
+skip = [".venv"]
+
+[tool.mypy]
+ignore_missing_imports = true
+
+[tool.bandit]
+skips = ['*_test.py']
+
+[tool.poetry.dependencies]
+pydantic = ">=2.4.2"
+pydantic-settings = ">=2.1.0"
+python = ">=3.10,<4.0"
+
+[tool.poetry.group.dev.dependencies]
+aioresponses = ">=0.7.4"
+asynctest = ">=0.13.0"
+bandit = ">=1.7.5"
+blue = ">=0.9.1"
+isort = ">=5.12.0"
+mypy = ">=1.4.1"
+pytest = ">=7.4.0"
+pytest-asyncio = ">=0.21.1"
+pytest-cov = ">=4.1.0"
+pytest-deadfixtures = ">=2.2.1"
+pytest-mock = ">=3.11.1"
+pytest-xdist = ">=3.3.1"
+pytest-timeout = ">=2.1.0"
+safety = ">=2.3.4"
+gitpython = ">=3.1.35"
+pytest-httpx = ">=0.27.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+addopts = "-vv --color=yes"
+testpaths = [
+    "tests",
+]
